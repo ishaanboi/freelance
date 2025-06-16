@@ -1,20 +1,21 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import '@fortawesome/fontawesome-free/css/all.min.css';
+import ProfilePage from './components/profile/ProfilePage';
 // Public Pages
 import Login from './components/auth/login';
 import Register from './components/auth/register';
 import HomePage from './components/home/HomePage';
 
-// Dashboard Pages
+// Dashboard Layouts
 import ClientDashboard from './components/client/ClientDashboard';
 import FreelancerDashboard from './components/freelancer/FreelancerDashboard';
 import AdminDashboard from './components/admin/AdminDashboard';
 
-// Dashboard Child Pages
+// Dashboard Content
 import PostProject from './components/client/PostProject';
 import ProjectList from './components/client/ProjectList';
-import UserProfile from './components/client/UserProfile';
+import UserProfile from './components/client/UserProfile'; // For Client
+import FreelancerProfile from './components/freelancer/FreelancerProfile'; // For Freelancer
 
 function App() {
   return (
@@ -26,7 +27,7 @@ function App() {
 
         {/* Home Page */}
         <Route path="/" element={<HomePage />} />
-
+        <Route path="/profile" element={<ProfilePage />} />
         {/* Client Dashboard */}
         <Route path="/client/dashboard" element={<ClientDashboard />}>
           <Route index element={<PostProject />} />
@@ -37,10 +38,10 @@ function App() {
 
         {/* Freelancer Dashboard */}
         <Route path="/freelancer/dashboard" element={<FreelancerDashboard />}>
-          {/* Add freelancer-specific routes later */}
           <Route index element={<div>Browse Projects</div>} />
           <Route path="browse-projects" element={<div>Browse Projects</div>} />
           <Route path="my-bids" element={<div>My Bids</div>} />
+          <Route path="profile" element={<FreelancerProfile />} /> {/* Add FreelancerProfile */}
         </Route>
 
         {/* Admin Dashboard */}

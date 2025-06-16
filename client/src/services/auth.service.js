@@ -29,3 +29,9 @@ export const logout = () => {
 export const getCurrentUser = () => {
   return JSON.parse(localStorage.getItem('user'));
 };
+
+// Save Profile Data
+export const saveProfileData = async (data) => {
+  const response = await axios.post(`${API_URL}/update-profile`, data);
+  return response.data;
+};

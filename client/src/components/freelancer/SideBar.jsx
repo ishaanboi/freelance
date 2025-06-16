@@ -1,7 +1,9 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 const FreelancerSidebar = () => {
+  const location = useLocation();
+
   const sidebarStyle = {
     width: '250px',
     backgroundColor: '#1a1a1a',
@@ -31,17 +33,26 @@ const FreelancerSidebar = () => {
       <h3 style={{ color: '#28a745' }}>MyFreelancer</h3>
       <nav>
         {/* Browse Projects */}
-        <Link to="/freelancer/dashboard/browse-projects" style={activeLinkStyle}>
+        <Link
+          to="/freelancer/dashboard/browse-projects"
+          style={location.pathname.includes('/browse-projects') ? activeLinkStyle : linkStyle}
+        >
           <i className="fas fa-folder-open"></i> Browse Projects
         </Link>
 
         {/* My Bids */}
-        <Link to="/freelancer/dashboard/my-bids" style={linkStyle}>
+        <Link
+          to="/freelancer/dashboard/my-bids"
+          style={location.pathname.includes('/my-bids') ? activeLinkStyle : linkStyle}
+        >
           <i className="fas fa-trophy"></i> My Bids
         </Link>
 
         {/* Profile */}
-        <Link to="/freelancer/dashboard/profile" style={linkStyle}>
+        <Link
+          to="/freelancer/dashboard/profile"
+          style={location.pathname.includes('/profile') ? activeLinkStyle : linkStyle}
+        >
           <i className="fas fa-user"></i> Profile
         </Link>
 
