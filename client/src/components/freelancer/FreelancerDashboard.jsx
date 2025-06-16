@@ -1,11 +1,14 @@
 import React from 'react';
+import { Outlet } from 'react-router-dom';
+import FreelancerSidebar from './SideBar'; // Import the freelancer-specific sidebar
 
 const FreelancerDashboard = () => {
   return (
-    <div className="container mt-5">
-      <h2>Freelancer Dashboard</h2>
-      <p>Browse freelance opportunities, submit bids, and track ongoing work.</p>
-      <button className="btn btn-primary">Browse Projects</button>
+    <div style={{ display: 'flex', height: '100vh' }}>
+      <FreelancerSidebar />
+      <main style={{ flex: 1, padding: '20px' }}>
+        <Outlet /> {/* Renders child routes here */}
+      </main>
     </div>
   );
 };
