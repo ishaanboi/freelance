@@ -1,13 +1,14 @@
 const express = require('express');
 const router = express.Router();
 const authController = require('../controllers/auth.controller');
+const { authenticate } = require('../middleware/auth.middleware'); // ✅ this was missing
 
 // Public Routes
 router.post('/register', authController.register);
 router.post('/login', authController.login);
 
-// Protected Routes (Require Auth)
-router.use(require('../middleware/auth.middleware')); // Apply middleware to protected routes
+// Protected Routes
+router.use(authenticate); // ✅ applies auth middleware to all routes below
 
 // Profile Routes
 router.put('/profile/:id', authController.updateProfile);
