@@ -5,7 +5,7 @@ exports.createProject = async (req, res) => {
     console.log("Incoming request body:", req.body); // ✅ log body
     const { title, description, budget, deadline } = req.body;
     const newProject = new Project({
-      client: req.user.id,,
+      client: req.user.id, // Assuming req.user is set by authentication middleware
       title,
       description,
       budget,
