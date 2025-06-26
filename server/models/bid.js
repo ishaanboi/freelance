@@ -1,28 +1,29 @@
 const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
-const BidSchema = new mongoose.Schema({
-  project: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Project',
-    required: true
-  },
+const bidSchema = new Schema({
   freelancer: {
-    type: mongoose.Schema.Types.ObjectId,
+    type: Schema.Types.ObjectId,
     ref: 'User',
     required: true
   },
-  amount: {
+  project: {
+    type: Schema.Types.ObjectId,
+    ref: 'Project',
+    required: true
+  },
+  bidAmount: {
     type: Number,
     required: true
   },
-  proposal: {
+  message: {
     type: String,
     required: true
   },
-  submittedAt: {
+  createdAt: {
     type: Date,
     default: Date.now
   }
 });
 
-module.exports = mongoose.model('Bid', BidSchema);
+module.exports = mongoose.model('Bid', bidSchema);

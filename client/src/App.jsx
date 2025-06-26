@@ -5,6 +5,7 @@ import ProfilePage from './components/profile/ProfilePage';
 import Login from './components/auth/login';
 import Register from './components/auth/register';
 import HomePage from './components/home/HomePage';
+import BrowseProjects from './components/freelancer/BrowseProjects';
 
 // Dashboard Layouts
 import ClientDashboard from './components/client/ClientDashboard';
@@ -16,6 +17,7 @@ import PostProject from './components/client/PostProject';
 import ProjectList from './components/client/ProjectList';
 import UserProfile from './components/client/UserProfile'; // For Client
 import FreelancerProfile from './components/freelancer/FreelancerProfile'; // For Freelancer
+import BidForm from './components/freelancer/BidForm'; // For Freelancer Bidding
 
 function App() {
   return (
@@ -39,7 +41,8 @@ function App() {
         {/* Freelancer Dashboard */}
         <Route path="/freelancer/dashboard" element={<FreelancerDashboard />}>
           <Route index element={<div>Browse Projects</div>} />
-          <Route path="browse-projects" element={<div>Browse Projects</div>} />
+            <Route path="browse-projects" element={<BrowseProjects />} />
+          
           <Route path="my-bids" element={<div>My Bids</div>} />
           <Route path="profile" element={<FreelancerProfile />} /> {/* Add FreelancerProfile */}
         </Route>

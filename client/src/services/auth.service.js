@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {jwtDecode} from 'jwt-decode';
+import { jwtDecode } from 'jwt-decode';
 
 const API_URL = 'http://localhost:5000/api/auth';
 
@@ -37,13 +37,23 @@ export const logout = () => {
   localStorage.removeItem('user');
 };
 
-// Get Current User
+// Get current user info
 export const getCurrentUser = () => {
   return JSON.parse(localStorage.getItem('user'));
 };
 
-// Save Profile Data
+// Get token for authenticated requests
+export const getAuthToken = () => {
+  return localStorage.getItem('token');
+};
+
+// Save profile data
 export const saveProfileData = async (data) => {
-  const response = await axios.post(`${API_URL}/update-profile`, data);
+  const token = getAuthToken();
+  const response = await axios.post(`${API_URL}/update-profile`, data, {
+    headers: {
+      'x-auth-token': token
+    }
+  });
   return response.data;
 };

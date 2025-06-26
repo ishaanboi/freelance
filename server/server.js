@@ -14,6 +14,10 @@ app.use(cors());
 app.use('/api/auth', require('./routes/auth.routes'));
 const projectRoutes = require('./routes/project.routes');
 app.use('/api/projects', projectRoutes);
+app.use('/api/bids', require('./routes/bid.routes'));
+app.use('/api/users', require('./routes/user.routes'));
+const bidRoutes = require('./routes/bid.routes');
+app.use('/api/bids', bidRoutes);
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
